@@ -9,6 +9,7 @@ const {
   getAllUsers,
   getUserDetails,
   getAllSellers,
+  getsellerData,
 } = require('../models/user');
 const { authenticateWithToken } = require('../models/helpers');
 const { validateEmail, checkPassword } = require('./helpers');
@@ -222,6 +223,15 @@ const getAllSellersHandler = async (req, res, next) => {
   }
 };
 
+const getSellerByNameHandler = async (req, res, next) => {
+  try {
+    let seller = await getsellerData(req.params.sellerName);
+    seller === undefined ? res.status(200).json('No seller found with such a name.') : res.status(200).json(seller);
+  }
+  catch (e) {
+    next(e);
+  }
+};
 module.exports = {
   signUpHandler,
   signInHandler,
@@ -231,4 +241,5 @@ module.exports = {
   getAllUsersHandler,
   getUserHandler,
   getAllSellersHandler,
+  getSellerByNameHandler,
 };

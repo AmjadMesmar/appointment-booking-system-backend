@@ -1,13 +1,13 @@
 'use strict';
 
 const { createAppointment, getAllAppointments, getUserAppointments, getAppointmentsDetails, updateAppointment, deleteAppointment } = require('../models/appointments');
-const {getSellerID} = require ('../auth/models/user');
+const {getsellerData} = require ('../auth/models/user');
 // This handler is used to create a new Appointment:
 
 let createAppointmentHandler = async (req, res, next) => {
   try {
-    let sellerID = await getSellerID(req.body.seller_name);
-    await createAppointment(sellerID, req.user.user_name, req.body);
+    let sellerData = await getsellerData(req.body.seller_name);
+    await createAppointment(sellerData.id, req.user.user_name, req.body);
     res.status(200).json({
       status: 200,
       message: 'Appointment created successfully',

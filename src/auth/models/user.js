@@ -146,16 +146,16 @@ async function getAllSellers() {
 }
 
 // Get seller id using the seller's name:
-async function getSellerID(sellerName) {
+async function getsellerData(sellerName) {
   try {
     let SQL = `SELECT * FROM SELLER WHERE seller_name=$1`;
     let safeValues = [sellerName];
     let sellerQuery = await client.query(SQL, safeValues);
 
-    return sellerQuery.rows[0].id;
+    return sellerQuery.rows[0];
   } catch (e) {
     throw new Error(e.message);
   }
 }
 
-module.exports = { createUser, getUser, getUserById, getUserByEmail, updateUserPassword, getAllUsers, getUserDetails, createSeller, getAllSellers, getSellerID };
+module.exports = { createUser, getUser, getUserById, getUserByEmail, updateUserPassword, getAllUsers, getUserDetails, createSeller, getAllSellers, getsellerData };
