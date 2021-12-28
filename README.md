@@ -1,4 +1,4 @@
-# appointment-booking-system-backend
+# Appointment booking system backend
 
 ## About
 
