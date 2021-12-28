@@ -9,12 +9,12 @@ const bearer = require('../auth/middlewares/bearer');
 router.use(bearer);
 
 // Appointment Routes
-router.post('/appointments',createAppointmentHandler);
-router.get('/appointments',getAllAppointmentsHandler);
-router.get('/appointments/user', getUserAppointmentsHandler);
-router.get('/appointments/:appointment_id', getAppointmentDetailsHandler);
-router.put('/appointments/:appointment_id', updateAppointmentHandler);
-router.delete('/appointments/:appointment_id',deleteAppointmentHandler);
+router.post('/appointments',createAppointmentHandler); // Book a new appointment
+router.get('/appointments',getAllAppointmentsHandler); // Get all appointments
+router.get('/appointments/user', getUserAppointmentsHandler); // Get all user's appointments
+router.get('/appointments/:appointment_id', getAppointmentDetailsHandler); // Get an appointment's details
+router.put('/appointments/:appointment_id', updateAppointmentHandler); // Update an appointment's status
+router.delete('/appointments/:appointment_id',deleteAppointmentHandler); // Delete an appointment
 
 
 

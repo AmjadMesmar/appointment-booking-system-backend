@@ -152,7 +152,6 @@ const signInHandler = async (req, res, next) => {
 };
 
 // This handler is to delete the user's access and refresh tokens on sign out request:
-
 const signoutHandler = async (req, res, next) => {
   try {
     await deleteToken(req.user.id);
@@ -166,7 +165,6 @@ const signoutHandler = async (req, res, next) => {
 };
 
 // This handler is used to get new tokens for the user:
-
 const refreshHandler = async (req, res, next) => {
   try {
     const user = await authenticateWithToken(req.body.refresh_token, 'refresh');
@@ -188,6 +186,7 @@ const refreshHandler = async (req, res, next) => {
   }
 };
 
+// Get all users
 const getAllUsersHandler = async (req, res, next) => {
   try {
     let allUsers = await getAllUsers();
@@ -200,6 +199,7 @@ const getAllUsersHandler = async (req, res, next) => {
   }
 };
 
+// Get user details
 const getUserHandler = async (req, res, next) => {
   try {
     let user = await getUserDetails(req.user.id);
@@ -211,6 +211,7 @@ const getUserHandler = async (req, res, next) => {
   }
 };
 
+//Get All sellers
 const getAllSellersHandler = async (req, res, next) => {
   try {
     let allSellers = await getAllSellers();
@@ -223,6 +224,7 @@ const getAllSellersHandler = async (req, res, next) => {
   }
 };
 
+// Get seller by name
 const getSellerByNameHandler = async (req, res, next) => {
   try {
     let seller = await getsellerData(req.params.sellerName);

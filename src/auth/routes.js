@@ -8,16 +8,16 @@ const authenticateBearer = require('./middlewares/bearer');
 const { signUpHandler, signInHandler, signoutHandler, refreshHandler, updateUserPasswordHandler, getAllUsersHandler,getUserHandler, getAllSellersHandler, getSellerByNameHandler } = require('./controllers/authControllers');
 
 
-// Routes
-authRouter.post('/signup', signUpHandler);
-authRouter.post('/signin', authenticateBasic, signInHandler);
-authRouter.get('/signout', authenticateBearer, signoutHandler);
-authRouter.get('/users', authenticateBearer,getAllUsersHandler);
-authRouter.get('/users/sellers', authenticateBearer,getAllSellersHandler);
-authRouter.get('/users/sellers/:sellerName', authenticateBearer,getSellerByNameHandler);
-authRouter.get('/user', authenticateBearer,getUserHandler);
-authRouter.post('/refresh', refreshHandler);
-authRouter.put('/user/password', authenticateBearer, updateUserPasswordHandler);
+// Auth Routes
+authRouter.post('/signup', signUpHandler);  //Sign Up
+authRouter.post('/signin', authenticateBasic, signInHandler); //sign In
+authRouter.get('/signout', authenticateBearer, signoutHandler); //Sign Out
+authRouter.get('/users', authenticateBearer,getAllUsersHandler); // Get all users
+authRouter.get('/users/sellers', authenticateBearer,getAllSellersHandler); // Get all sellers
+authRouter.get('/users/sellers/:sellerName', authenticateBearer,getSellerByNameHandler); // Get seller by name
+authRouter.get('/user', authenticateBearer,getUserHandler); // Get user's details
+authRouter.put('/user/password', authenticateBearer, updateUserPasswordHandler); // Cahange user's password
+authRouter.post('/refresh', refreshHandler); // Refresh user's tokens
 
 
 authRouter.get('/test', authenticateBearer, (req, res, next) => {
